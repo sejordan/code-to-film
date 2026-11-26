@@ -14,6 +14,9 @@ A visual walkthrough of the whole setup, with diagrams: [Code to Film](https://c
 `films/example` is a 9.5-second film (a marble knocks over a domino, with one narrated line) that runs through
 every step, and `podcasts/example` is a one-minute episode that does the same for the podcast tools.
 
+**Watch the example film:** [the-marble-1080p.mp4](https://github.com/sejordan/code-to-film/releases/download/v0.1.0/the-marble-1080p.mp4)
+(rendered at 4K with the commands below, then scaled down).
+
 ## What you need
 
 - A Mac with Apple Silicon (mlx-audio runs the speech models on it). Picture and sound work anywhere Blender runs.
@@ -151,7 +154,8 @@ about twice the expected run, and remove machines as soon as the output is check
   Traffic is billed by the gigabyte on top. Needs `vastai set api-key`; the project's SSH key is added
   to your Vast account the first time.
 
-For scale: a 9.5-second 960×540 preview is a few minutes on the Mac. A 68-second one took 11 minutes on two
+For scale: a 9.5-second 960×540 preview is a few minutes on the Mac. The example film's 228 frames at
+full 4K took 9 minutes on two Vast RTX 4090s (about 3.5 s a frame, a minute of setup each) for about $0.13. A 68-second one took 11 minutes on two
 Vast RTX 4090s for about $0.13; the same run locally would have taken about 40 minutes.
 
 The glTF models in `assets/sketchfab/` are not yet sent to rented machines, so a film using them renders
