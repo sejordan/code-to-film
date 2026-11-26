@@ -9,6 +9,8 @@ Short films and podcasts made entirely from code, on a Mac:
 - **Edit:** ffmpeg, with a light film finish (glow, vignette, grain), title and fades.
 - **Rented GPUs:** RunPod or Vast.ai, by the minute, when a render or a long narration would tie up the Mac.
 
+A visual walkthrough of the whole setup, with diagrams: [Code to Film](https://claude.ai/artifact/JxemLkJtG3a6GcCVZgLqGE).
+
 `films/example` is a 9.5-second film (a marble knocks over a domino, with one narrated line) that runs through
 every step, and `podcasts/example` is a one-minute episode that does the same for the podcast tools.
 
