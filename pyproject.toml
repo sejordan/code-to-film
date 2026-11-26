@@ -1,0 +1,11 @@
+[project]
+name = "code-to-film"
+version = "0.1.0"
+description = "Short films and podcasts made from code: Blender for the picture, numpy for the sound, local text-to-speech for the voices, rented GPUs when the Mac is too slow."
+requires-python = ">=3.11"
+dependencies = [
+    "boto3>=1.44.9",
+    "mlx-audio[tts]>=0.6.6",
+    "numpy>=2.4.6",
+    "pillow>=13.0.0",
+]

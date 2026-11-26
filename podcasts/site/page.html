@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="<!--LANG-->">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title><!--TITLE--></title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%230E7A5A'/%3E%3Cpath d='M6 4.5v7l5.5-3.5z' fill='white'/%3E%3C/svg%3E">
+<style>
+:root {
+  --fondo: #F1F6F8;
+  --panel: #FFFFFF;
+  --tinta: #12211D;
+  --suave: #54655F;
+  --linea: #D3DDDF;
+  --marca: #0E7A5A;
+  --sobre-marca: #FFFFFF;
+  --display: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --texto: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #0D1614;
+    --panel: #15211E;
+    --tinta: #E7EFEB;
+    --suave: #9AABA5;
+    --linea: #25332F;
+    --marca: #5CCBA6;
+    --sobre-marca: #0D1614;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto;
+  max-width: 42rem;
+  padding: 2rem 1.25rem 4rem;
+  background: var(--fondo);
+  color: var(--tinta);
+  font: 1.0625rem/1.55 var(--texto);
+  -webkit-text-size-adjust: 100%;
+}
+h1, h2, p, ol { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--marca); outline-offset: 3px; border-radius: 4px; }
+
+.sitio h1 {
+  font: 800 clamp(2rem, 8.5vw, 2.9rem)/1.05 var(--display);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.sitio p { margin-top: 0.75rem; color: var(--suave); font-size: 0.95rem; }
+
+.temas { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.75rem; }
+.tema {
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid var(--linea);
+  border-radius: 999px;
+  background: var(--panel);
+  font-weight: 600;
+  text-decoration: none;
+}
+.tema span { margin-left: 0.25rem; color: var(--suave); font-weight: 400; font-variant-numeric: tabular-nums; }
+.tema[aria-current] { border-color: var(--marca); background: var(--marca); color: var(--sobre-marca); }
+.tema[aria-current] span { color: inherit; opacity: 0.8; }
+.cuenta { margin-top: 0.9rem; color: var(--suave); }
+
+.suscribir {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  background: var(--panel);
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+.suscribir .direccion { margin-top: 0.35rem; overflow-wrap: anywhere; font-weight: 600; }
+.suscribir button {
+  margin-top: 0.75rem;
+  padding: 0.55rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--marca);
+  color: var(--sobre-marca);
+  font: 600 0.95rem var(--texto);
+  cursor: pointer;
+}
+
+.episodios { margin-top: 1.75rem; padding: 0; list-style: none; }
+.episodios li { padding: 1.25rem 0 1.4rem; border-top: 1px solid var(--linea); scroll-margin-top: 1rem; }
+.episodios li[hidden] { display: none; }
+.serie { color: var(--marca); font-size: 0.95rem; font-weight: 650; }
+.titulo { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-top: 0.1rem; }
+.titulo h2 { font: 700 1.3rem/1.25 var(--display); text-wrap: balance; }
+.duracion { color: var(--suave); font-size: 0.95rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.resumen { margin-top: 0.35rem; color: var(--suave); }
+.episodios audio { display: block; width: 100%; margin-top: 0.85rem; }
+.pie { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin-top: 0.6rem; font-size: 0.95rem; color: var(--suave); }
+.descargar { margin-left: auto; }
+</style>
+</head>
+<body>
+<header class="sitio">
+  <h1><!--TITLE--></h1>
+  <p><!--MADE_BY--> There may be mistakes.</p>
+</header>
+<main>
+<!--CONTENIDO-->
+</main>
+<script>
+(function () {
+  var items = document.querySelectorAll('.episodios li');
+  var chips = document.querySelectorAll('a.tema');
+  var cuenta = document.getElementById('cuenta');
+  var box = document.getElementById('suscribir');
+  var link = box.querySelector('a');
+  var button = box.querySelector('button');
+
+  // The address after # picks a tag: #tema=historia. Anything else shows all.
+  function show() {
+    var found = /^#tema=([a-z0-9-]+)$/.exec(location.hash);
+    var tema = found ? found[1] : '';
+    if (!document.querySelector('a.tema[data-tema="' + tema + '"]')) tema = '';
+    var n = 0, seconds = 0;
+    items.forEach(function (li) {
+      var on = !tema || li.dataset.temas.split(' ').indexOf(tema) >= 0;
+      li.hidden = !on;
+      if (on) { n += 1; seconds += Number(li.dataset.segundos); }
+    });
+    chips.forEach(function (c) {
+      if (c.dataset.tema === tema) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current');
+    });
+    var minutes = Math.round(seconds / 60);
+    cuenta.textContent = n + (n === 1 ? ' episode, ' : ' episodes, ') + minutes + (minutes === 1 ? ' minute' : ' minutes');
+    var feed = box.dataset.base + (tema ? tema + '/' : '') + 'feed.xml';
+    link.href = feed;
+    link.textContent = feed;
+    button.textContent = 'Copy address';
+  }
+  window.addEventListener('hashchange', show);
+  show();
+
+  button.addEventListener('click', function () {
+    navigator.clipboard.writeText(link.href).then(function () { button.textContent = 'Address copied'; });
+  });
+  document.addEventListener('play', function (e) {
+    document.querySelectorAll('audio').forEach(function (a) { if (a !== e.target) a.pause(); });
+  }, true);
+})();
+</script>
+</body>
+</html>

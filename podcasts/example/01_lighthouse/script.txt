@@ -1,0 +1,16 @@
+# An example episode, to show the script format. Lines starting with # are
+# notes; lines starting with > ask mix.py for story sounds. Neither is spoken.
+# Cues in square brackets steer Drama 3's delivery; Voxtral ignores them.
+
+Hello, and welcome. Today: a very short story about a lighthouse.
+
+> sea
+The lighthouse stood at the end of a long stone pier. Every night for ninety years, its lamp turned, slowly, out over the water.
+
+> rain, bell
+Then one winter night, in the middle of a storm, the lamp stopped. [sighs] The keeper climbed the stairs, all one hundred and twelve of them.
+
+> night
+He found the trouble, a single loose wire, and fixed it by hand. And the light came back on, just as a fishing boat turned for home.
+
+That's all for today. [laughs] Thanks for listening.

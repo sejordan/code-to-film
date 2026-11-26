@@ -1,0 +1,16 @@
+# The front door of the podcast site: every request is passed to the
+# storage bucket, and the bare address shows the bucket's index.html.
+# Nothing here changes when episodes are published.
+{
+	auto_https off
+	admin off
+}
+:8080 {
+	@notread not method GET HEAD
+	respond @notread 405
+	header X-Robots-Tag "noindex, nofollow"
+	rewrite / /index.html
+	reverse_proxy https://{$BUCKET_HOST} {
+		header_up Host {upstream_hostport}
+	}
+}

@@ -1,0 +1,18 @@
+# The front door of the podcast site: passes every request to the bucket. Deploy from the project root:
+#     fly deploy podcasts/site/app --ha=false
+app = "my-podcasts"           # your Fly app's name
+primary_region = "sjc"
+
+[env]
+  BUCKET_HOST = "my-podcasts.fly.storage.tigris.dev"   # your bucket's public host
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"

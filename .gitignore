@@ -1,0 +1,21 @@
+# secrets and cloud run records (the rented machines' SSH key lives in .cloud/)
+.env
+.cloud/
+
+# everything a tool makes
+out/
+films/*/voice/
+auditions/
+assets/polyhaven/
+assets/sketchfab/
+podcasts/sounds/
+podcasts/voices/*.wav
+podcasts/voices/*.txt
+podcasts/*/*/out/
+podcasts/*/*/takes/
+
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.playwright-mcp/

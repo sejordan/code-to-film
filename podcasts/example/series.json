@@ -1,0 +1,9 @@
+{
+  "title": "Example Stories",
+  "tags": ["stories"],
+  "published": "2026-11-26",
+  "episodes": [
+    {"number": 1, "slug": "lighthouse", "audio": "01_lighthouse/out/voxtral_mix.mp3",
+     "title": "The Lighthouse", "summary": "A storm, a stopped lamp, and one hundred and twelve stairs."}
+  ]
+}
